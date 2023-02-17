@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HandTracking : MonoBehaviour
@@ -16,12 +17,14 @@ public class HandTracking : MonoBehaviour
     void Update()
     {
         string data = udpReceive.data;
-
+        //print(udpReceive.data);
         data = data.Remove(0, 1);
+        //data = string.Join("", data.Where(c => char.IsDigit('[')));
         data = data.Remove(data.Length - 1, 1);
         print(data);
         string[] points = data.Split(',');
         print(points[0]);
+       
 
         //0        1*3      2*3
         //x1,y1,z1,x2,y2,z2,x3,y3,z3
